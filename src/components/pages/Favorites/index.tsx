@@ -15,7 +15,7 @@ const Favorite: React.FC<HomeProps> = () => {
         <h1>Meus Favoritos</h1>
         <section className="musics">
           <ul className="musics__list">
-            <MusicCard dark={false} />
+            <MusicCard dark={false} favorite={true} />
           </ul>
         </section>
         {/* End of card list component */}

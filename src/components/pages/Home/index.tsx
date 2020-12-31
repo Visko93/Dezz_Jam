@@ -38,7 +38,7 @@ const Home: React.FC<HomeProps> = () => {
         {/* Card renderinf must be abstracted */}
         <section className="musics">
           <ul className="musics__list">
-            <MusicCard dark={false} />
+            <MusicCard dark={false} favorite={false} />
           </ul>
         </section>
         {/* End of card list component */}

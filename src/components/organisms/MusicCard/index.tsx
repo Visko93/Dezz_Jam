@@ -1,13 +1,15 @@
 import * as React from 'react'
+import { FiPlay, FiPlus, FiMinus } from 'react-icons/fi'
 import { MusicCardStyle } from './style'
 
 import placeholder from '../../../assets/png/imgplh.png'
 
 export interface CardProps {
   dark: boolean
+  favorite: boolean
 }
 
-const MusicCard: React.FC<CardProps> = ({ dark = false }) => {
+const MusicCard: React.FC<CardProps> = ({ dark = false, favorite = false }) => {
   return (
     <MusicCardStyle dark={dark}>
       <section className="musics">
@@ -30,8 +32,16 @@ const MusicCard: React.FC<CardProps> = ({ dark = false }) => {
                 </div>
               </div>
               <div className="musics__card-action">
-                <button>{`>`}</button>
-                <button>+</button>
+                <button>
+                  <FiPlay size={30} fill={'white'} color={'white'} />
+                </button>
+                <button>
+                  {favorite ? (
+                    <FiMinus size={30} fill={'white'} color={'white'} />
+                  ) : (
+                    <FiPlus size={30} fill={'white'} color={'white'} />
+                  )}
+                </button>
               </div>
             </div>
           </li>
