@@ -14,4 +14,9 @@ export const HomeRoot = styled.main<HomeProps>`
     max-width: 1000px;
     margin: 0 auto;
   }
+  .musics__list {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: 0 auto;
+  }
 `

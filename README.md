@@ -17,3 +17,13 @@ yarn install #npm install
 ```bash
 yarn start #npm start
 ```
+
+- Criando uma chave SSL pelo padrão rsa com validade de 365 dias
+
+```
+openssl req -x509 -newkey rsa:2048 -keyout keytmp.pem -out cert.pem -days 365
+```
+
+```
+openssl rsa -in keytmp.pem -out key.pem
+```

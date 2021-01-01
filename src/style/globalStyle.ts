@@ -185,6 +185,7 @@ input[type="submit"] {
 
 ul{
   list-style: none;
+  padding: 0;
 }
 
 button[disabled],
