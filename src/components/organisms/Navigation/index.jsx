@@ -2,11 +2,7 @@ import * as React from 'react'
 import { NavLink } from 'react-router-dom'
 import { NavigationRoot } from './style'
 
-export interface NavProps {
-  dark?: boolean
-}
-
-const Navigation: React.FC<NavProps> = ({ dark = false }) => {
+const Navigation = ({ dark = false }) => {
   return (
     <NavigationRoot dark={dark}>
       <div className="nav">

@@ -3,11 +3,13 @@ import { HeaderRoot } from './style'
 
 import logo from '../../../assets/svg/logo_dezz.svg'
 
-export interface HeaderProps {
-  dark?: boolean
+const SearchParams = {
+  artist: 'ARTIST',
+  album: 'ALBUM',
+  music: 'TRACK',
 }
 
-const Header: React.FC<HeaderProps> = ({ dark = false }) => {
+const Header = ({ dark = false }) => {
   return (
     <HeaderRoot dark={dark}>
       <header className="header">

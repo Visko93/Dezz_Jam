@@ -1,9 +1,7 @@
 import * as React from 'react'
 import { NotFoundRoot } from './style'
 
-export interface HomeProps {}
-
-const Home: React.FC<HomeProps> = () => {
+const Home = () => {
   return (
     <NotFoundRoot dark={false}>
       <div className="main__app">

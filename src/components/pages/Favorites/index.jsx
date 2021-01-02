@@ -4,17 +4,16 @@ import { HomeRoot } from './style'
 import MusicCard from '../../organisms/MusicCard'
 import Header from '../../organisms/Header'
 
-export interface HomeProps {}
-
-const Home: React.FC<HomeProps> = () => {
+const Favorite = () => {
   return (
     <HomeRoot dark={false}>
       <div className="main__app">
-        <Header dark={false} />
+        <Header />
         {/* Card renderinf must be abstracted */}
+        <h1>Meus Favoritos</h1>
         <section className="musics">
           <ul className="musics__list">
-            <MusicCard dark={false} favorite={false} />
+            <MusicCard dark={false} favorite={true} />
           </ul>
         </section>
         {/* End of card list component */}
@@ -23,4 +22,4 @@ const Home: React.FC<HomeProps> = () => {
   )
 }
 
-export default Home
+export default Favorite

@@ -1,11 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
+import ErrorBoundry from './errors/ErrorBoundary'
 import reportWebVitals from './reportWebVitals'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ErrorBoundry>
+      <App />
+    </ErrorBoundry>
   </React.StrictMode>,
   document.getElementById('root'),
 )

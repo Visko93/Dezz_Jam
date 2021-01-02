@@ -18,12 +18,9 @@ yarn install #npm install
 yarn start #npm start
 ```
 
-- Criando uma chave SSL pelo padrão rsa com validade de 365 dias
+### ISSUES
 
-```
-openssl req -x509 -newkey rsa:2048 -keyout keytmp.pem -out cert.pem -days 365
-```
-
-```
-openssl rsa -in keytmp.pem -out key.pem
-```
+- #### CORS clocking the request
+  - Since I used axios to make the calls to the deezer API, the default behaver was to use cors policy, however the end-point did not allowed the app calls providing <quote>'Access-Control-Allow-Origin</quote> after the first OPTIONS HTTP call
+  - I used an proxy call that added the 'Access-Control-Allow-Origin' to the response, and allowed the second call, GET, to be received and responded by the end-Point
+  - [https://cors-anywhere.herokuapp.com/](https://github.com/Rob--W/cors-anywhere/#documentation)

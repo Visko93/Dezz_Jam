@@ -1,11 +1,6 @@
 import styled from 'styled-components'
 
-interface NavProps {
-  className?: string
-  dark?: boolean
-}
-
-export const NavigationRoot = styled.main<NavProps>`
+export const NavigationRoot = styled.main`
   .nav {
     position: fixed;
     top: 5px;

@@ -1,11 +1,6 @@
 import styled from 'styled-components'
 
-interface HomeProps {
-  className?: string
-  dark?: boolean
-}
-
-export const HomeRoot = styled.main<HomeProps>`
+export const HomeRoot = styled.main`
   .main__app {
     display: flex;
     flex-direction: column;

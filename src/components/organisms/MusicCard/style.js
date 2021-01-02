@@ -1,17 +1,13 @@
 import styled from 'styled-components'
 
-interface MusicCardProps {
-  className?: string
-  dark?: boolean
-}
-
-export const MusicCardStyle = styled.div<MusicCardProps>`
+export const MusicCardStyle = styled.div`
   .musics__card {
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 100%;
     max-width: 300px;
+    margin-top: 0.725em;
 
     align-items: center;
     border-radius: 15px;
@@ -27,6 +23,7 @@ export const MusicCardStyle = styled.div<MusicCardProps>`
 
       img {
         object-fit: cover;
+        border-radius: 0.5em;
         width: 100%;
       }
     }

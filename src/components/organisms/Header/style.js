@@ -1,11 +1,6 @@
 import styled from 'styled-components'
 
-interface HeaderProps {
-  className?: string
-  dark?: boolean
-}
-
-export const HeaderRoot = styled.main<HeaderProps>`
+export const HeaderRoot = styled.main`
   .header {
     display: flex;
     color: ${(props) => (props.dark ? '#A0E02C' : '#390040')};
