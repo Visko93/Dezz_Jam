@@ -7,8 +7,10 @@ export const MusicCardStyle = styled.div`
     justify-content: center;
     width: 100%;
     max-width: 300px;
+    min-height: 250px;
     margin-top: 0.725em;
 
+    color: ${(props) => (props.dark ? '#FF76D7' : '#A0E02C')};
     align-items: center;
     border-radius: 15px;
     background-color: ${(props) => (props.dark ? '#2B302A' : '#FBFBFB')};
@@ -25,6 +27,7 @@ export const MusicCardStyle = styled.div`
         object-fit: cover;
         border-radius: 0.5em;
         width: 100%;
+        margin-bottom: 0.525em;
       }
     }
     .musics__card-infos {

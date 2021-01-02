@@ -1,7 +1,5 @@
 import { DefaultTheme } from 'styled-components'
 
-export type ThemeType = typeof theme
-
 const colorPallet = {
   primary: '#390040',
   primaryLight: '#662D6B',

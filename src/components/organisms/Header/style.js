@@ -28,23 +28,25 @@ export const HeaderRoot = styled.main`
   label {
     display: flex;
     align-items: center;
+    color: ${(props) => (props.dark ? '#A0E02C' : '#390040')};
     transition: color ease-in-out 100ms;
 
     &:focus,
     &:hover {
-      color: ${(props) => (props.dark ? '#390040' : '#A0E02C')};
+      color: ${(props) => (props.dark ? '#FF76D7' : '#A0E02C')};
     }
   }
   input[type='radio'] {
     display: inline-block;
     width: 2em;
     height: 2em;
-    margin-right: 0.175em;
+    margin: 0 0.25em;
+    color: ${(props) => (props.dark ? '#A0E02C' : '#390040')};
     border-color: ${(props) => (props.dark ? '#A0E02C' : '#390040')};
 
     &:focus,
     &:hover {
-      background: ${(props) => (props.dark ? '#A0E02C' : '#390040')};
+      background: ${(props) => (props.dark ? '#FF76D7' : '#390040')};
     }
   }
   input[type='search'] {

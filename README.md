@@ -18,6 +18,10 @@ yarn install #npm install
 yarn start #npm start
 ```
 
+### Plus
+
+- Skeleton - (Link)[https://github.com/dvtng/react-loading-skeleton]
+
 ### ISSUES
 
 - #### CORS clocking the request

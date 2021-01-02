@@ -5,11 +5,11 @@ import getTrendingList from '../../../api/getMusic'
 import MusicCard from '../../organisms/MusicCard'
 import Header from '../../organisms/Header'
 
-const Home = () => {
+const Home = ({ dark }) => {
   const [MusicsList, setMusicsList] = React.useState([])
   const [error, setError] = React.useState(false)
   const [loading, setLoading] = React.useState(false)
-  const offset = 10
+  const offset = 0
 
   React.useEffect(() => {
     setLoading(true)
@@ -25,15 +25,15 @@ const Home = () => {
   console.log(MusicsList)
   if (error) return
   return (
-    <HomeRoot dark={false}>
+    <HomeRoot dark={dark}>
       <div className="main__app">
-        <Header dark={false} />
+        <Header dark={dark} />
         {/* Card renderinf must be abstracted */}
         <section className="musics">
           <ul className="musics__list">
             {MusicsList.map((music) => (
               <MusicCard
-                dark={false}
+                dark={dark}
                 favorite={false}
                 music={music}
                 key={music.id}

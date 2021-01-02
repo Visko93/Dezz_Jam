@@ -4,14 +4,14 @@ import { Route, Switch } from 'react-router-dom'
 import Home from './pages/Home'
 import Favorite from './pages/Favorites'
 
-const Routes = () => {
+const Routes = ({ dark }) => {
   return (
     <Switch>
       <Route exact path="/">
-        <Home />
+        <Home dark={dark} />
       </Route>
       <Route path="/favorites">
-        <Favorite />
+        <Favorite dark={dark} />
       </Route>
     </Switch>
   )

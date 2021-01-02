@@ -5,6 +5,7 @@ export const NavigationRoot = styled.main`
     position: fixed;
     top: 5px;
     left: 25px;
+    color: ${(props) => (props.dark ? '#A0E02C' : '#390040')};
 
     .nav__container {
       display: flex;

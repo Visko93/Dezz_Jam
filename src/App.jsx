@@ -9,12 +9,14 @@ import { GlobalStyle } from './style/globalStyle'
 import Navigation from './components/organisms/Navigation'
 
 function App() {
+  const dark = false
+
   return (
     <Router>
       <ThemeProvider theme={theme}>
-        <AppStyle>
-          <Routes />
-          <Navigation />
+        <AppStyle dark={dark}>
+          <Routes dark={dark} />
+          <Navigation dark={dark} />
           <GlobalStyle />
         </AppStyle>
       </ThemeProvider>
