@@ -5,10 +5,16 @@ import MusicCard from '../../organisms/MusicCard'
 import Header from '../../organisms/Header'
 
 const Favorite = ({ dark }) => {
+  const [searchParam, setSearchParam] = React.useState()
+
+  const handleParamSelection = (e) => {
+    const { value } = e.target
+    setSearchParam(value)
+  }
   return (
     <HomeRoot dark={dark}>
       <div className="main__app">
-        <Header />
+        <Header props={{ dark, searchParam, handleParamSelection }} />
         {/* Card renderinf must be abstracted */}
         <h1>Meus Favoritos</h1>
         <section className="musics">

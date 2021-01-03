@@ -2,7 +2,6 @@ import api from './api'
 //import path from 'path'
 
 export default async function getTrendingList(offset) {
-  console.log(offset)
   try {
     if (offset === 0) {
       const res = await api.get(`chart/0/tracks`)
