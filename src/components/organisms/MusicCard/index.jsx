@@ -74,7 +74,6 @@ const MusicCard = ({ dark = false, favorite = false, music }) => {
               </div>
               {music ? (
                 <ReactAudioPlayer
-                  width={100}
                   color={'blue'}
                   controlsList="nodownload"
                   src={music ? music.preview : null}

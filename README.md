@@ -21,6 +21,8 @@ yarn start #npm start
 ### Plus
 
 - Skeleton - (Link)[https://github.com/dvtng/react-loading-skeleton]
+- Using immer to manipulate immutabillity
+- Using `redux-immutable-state-invariant` midleware to ensure that data is not mutate in a displtch or between dispatches during development
 
 ### ISSUES
 

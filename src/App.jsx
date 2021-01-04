@@ -8,19 +8,25 @@ import Routes from './components/routes'
 import { GlobalStyle } from './style/globalStyle'
 import Navigation from './components/organisms/Navigation'
 
+import configureStore from './redux/configureStore'
+import { Provider as ReduxProvider } from 'react-redux'
+const store = configureStore()
+
 function App() {
   const dark = true
 
   return (
-    <Router>
-      <ThemeProvider theme={theme}>
-        <AppStyle dark={dark}>
-          <Routes dark={dark} />
-          <Navigation dark={dark} />
-          <GlobalStyle />
-        </AppStyle>
-      </ThemeProvider>
-    </Router>
+    <ReduxProvider store={store}>
+      <Router>
+        <ThemeProvider theme={theme}>
+          <AppStyle dark={dark}>
+            <Routes dark={dark} />
+            <Navigation dark={dark} />
+            <GlobalStyle />
+          </AppStyle>
+        </ThemeProvider>
+      </Router>
+    </ReduxProvider>
   )
 }
 
