@@ -51,6 +51,7 @@ export const HeaderRoot = styled.main`
   }
   input[type='search'] {
     width: 40%;
+    color: #390040;
     min-width: 150px;
     -webkit-appearance: none;
     appearance: none;
@@ -75,8 +76,8 @@ export const HeaderRoot = styled.main`
 
     &:focus,
     &:hover {
-      border-color: ${(props) => (props.dark ? '#390040' : '#A0E02C')};
-      color: ${(props) => (props.dark ? '#390040' : '#A0E02C')};
+      border-color: ${(props) => (props.dark ? '#FF76D7' : '#A0E02C')};
+      color: ${(props) => (props.dark ? '#FF76D7' : '#A0E02C')};
     }
   }
 `

@@ -9,7 +9,7 @@ import { GlobalStyle } from './style/globalStyle'
 import Navigation from './components/organisms/Navigation'
 
 function App() {
-  const dark = false
+  const dark = true
 
   return (
     <Router>

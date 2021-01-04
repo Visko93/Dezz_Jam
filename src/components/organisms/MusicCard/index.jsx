@@ -1,7 +1,8 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
-
+import ReactAudioPlayer from 'react-audio-player'
 import Skeleton from 'react-loading-skeleton'
+
 import {
   FiPlay,
   FiPlus,
@@ -15,21 +16,6 @@ import placeholder from '../../../assets/png/imgplh.png'
 
 const MusicCard = ({ dark = false, favorite = false, music }) => {
   const [playing, setPlaying] = React.useState(false)
-
-  const handlePlay = (e) => {
-    const audio = e.target.children[0]
-    if (!audio || audio === undefined) return
-    if (playing) {
-      audio.pause()
-      setPlaying(false)
-    } else {
-      audio.play()
-      setPlaying(true)
-      setTimeout(() => {
-        setPlaying(false)
-      }, 31000)
-    }
-  }
 
   return (
     <MusicCardStyle dark={dark}>
@@ -69,14 +55,6 @@ const MusicCard = ({ dark = false, favorite = false, music }) => {
                 </div>
               </div>
               <div className="musics__card-action">
-                <button onClick={handlePlay}>
-                  <audio src={music.preview} />
-                  {playing ? (
-                    <FiPause size={20} fill={'white'} color={'white'} />
-                  ) : (
-                    <FiPlay size={20} fill={'white'} color={'white'} />
-                  )}
-                </button>
                 <a
                   href={music ? music.link : null}
                   target="_blank"
@@ -94,6 +72,17 @@ const MusicCard = ({ dark = false, favorite = false, music }) => {
                   )}
                 </button>
               </div>
+              {music ? (
+                <ReactAudioPlayer
+                  width={100}
+                  color={'blue'}
+                  controlsList="nodownload"
+                  src={music ? music.preview : null}
+                  controls
+                />
+              ) : (
+                <Skeleton height={30} width={250} />
+              )}
             </div>
           </li>
         </ul>

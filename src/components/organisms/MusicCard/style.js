@@ -112,4 +112,13 @@ export const MusicCardStyle = styled.div`
       flex-flow: row;
     }
   }
+  audio::-webkit-media-controls-panel,
+  audio::-webkit-media-controls-enclosure {
+    margin: 0.525em 0;
+    color: #fff;
+    fill: #fff;
+    background-color: ${(props) => (props.dark ? '#FF76D7' : '#662D6B')};
+    width: 200px;
+    height: 25px;
+  }
 `
