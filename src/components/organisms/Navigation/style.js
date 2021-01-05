@@ -22,7 +22,7 @@ export const NavigationRoot = styled.main`
         padding: 0.125em;
 
         a {
-          text-decoration: none;
+          color: ${(props) => (props.dark ? '#A0E02C' : '#390040')};
         }
       }
     }

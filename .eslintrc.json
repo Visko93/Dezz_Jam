@@ -2,7 +2,7 @@
   "extends": ["react-app", "prettier"],
   "plugins": ["prettier"],
   "rules": {
-    "camelcase": 1,
+    "camelcase": "off",
     "no-debugger": "off",
     "no-console": "off",
     "no-unused-vars": "off"

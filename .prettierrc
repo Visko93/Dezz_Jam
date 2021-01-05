@@ -1,7 +1,7 @@
 {
   "printWidth": 70,
   "singleQuote": true,
-  "semi": false,
+  "semi": true,
   "tabWidth": 2,
   "htmlWhitespaceSensitivity": "css",
   "trailingComma": "all"

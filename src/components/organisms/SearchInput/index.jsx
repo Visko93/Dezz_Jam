@@ -28,7 +28,7 @@ const SearchInput = ({
           </label>
           <label>
             <input name="params" value="album" type="radio" />
-            Albúm
+            Album
           </label>
           <label>
             <input name="params" value="artist" type="radio" />

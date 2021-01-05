@@ -13,8 +13,10 @@ export const MusicCardStyle = styled.div`
     color: ${(props) => (props.dark ? '#FF76D7' : '#A0E02C')};
     align-items: center;
     border-radius: 15px;
-    background-color: ${(props) => (props.dark ? '#2B302A' : '#FBFBFB')};
-    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.28), 3px 3px 5px rgba(0, 0, 0, 0.28);
+    background-color: ${(props) =>
+      props.dark ? '#2B302A' : '#FBFBFB'};
+    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.28),
+      3px 3px 5px rgba(0, 0, 0, 0.28);
     padding: 1em 0;
 
     .musics__card-img {
@@ -55,8 +57,10 @@ export const MusicCardStyle = styled.div`
 
       button {
         border-radius: 50%;
-        background-color: ${(props) => (props.dark ? '#FF76D7' : '#662D6B')};
-        border-color: ${(props) => (props.dark ? '#FF76D7' : '#662D6B')};
+        background-color: ${(props) =>
+          props.dark ? '#FF76D7' : '#662D6B'};
+        border-color: ${(props) =>
+          props.dark ? '#FF76D7' : '#662D6B'};
         align-self: flex-end;
         padding: 1.25em 1.25em;
 
@@ -66,11 +70,48 @@ export const MusicCardStyle = styled.div`
 
         &:focus,
         &:hover {
-          border-color: ${(props) => (props.dark ? '#662D6B' : '#FF76D7')};
-          background-color: ${(props) => (props.dark ? '#662D6B' : '#FF76D7')};
+          border-color: ${(props) =>
+            props.dark ? '#662D6B' : '#FF76D7'};
+          background-color: ${(props) =>
+            props.dark ? '#662D6B' : '#FF76D7'};
           color: ${(props) => (props.dark ? '#662D6B' : '#FF76D7')};
         }
       }
+    }
+  }
+  audio {
+    margin: 0.525em 0;
+    width: 250px;
+    height: 50px;
+    border-radius: 8px;
+    outline: none;
+    color: #fff;
+
+    &::-webkit-media-controls-panel,
+    &::-webkit-media-controls-enclosure {
+      display: flex;
+      background-color: ${(props) =>
+        props.dark ? '#FF76D79F' : '#662D6B9F'};
+
+      overflow: hidden;
+      outline-color: transparent;
+      border-color: transparent;
+      border-radius: 8px;
+
+      -webkit-user-select: none;
+    }
+    &::-webkit-media-controls-timeline-container,
+    &::-webkit-media-controls-volume-slider-container {
+      outline: #fff;
+    }
+    &::-webkit-media-controls-play-button,
+    &::-webkit-media-controls-mute-button,
+    &::-webkit-media-controls-timeline,
+    &::-webkit-media-controls-current-time-display,
+    &::-webkit-media-controls-time-remaining-display,
+    &::-webkit-media-controls-volume-slider {
+      color: rgba(255, 255, 255, 1) !important;
+      fill: rgba(255, 255, 255, 1);
     }
   }
   @media (min-width: 768px) {
@@ -111,14 +152,5 @@ export const MusicCardStyle = styled.div`
     .musics__card-action {
       flex-flow: row;
     }
-  }
-  audio::-webkit-media-controls-panel,
-  audio::-webkit-media-controls-enclosure {
-    margin: 0.525em 0;
-    color: #fff;
-    fill: #fff;
-    background-color: ${(props) => (props.dark ? '#FF76D7' : '#662D6B')};
-    width: 200px;
-    height: 25px;
   }
 `

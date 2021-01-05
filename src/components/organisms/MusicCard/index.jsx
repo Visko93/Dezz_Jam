@@ -1,93 +1,104 @@
-import * as React from 'react'
-import { Link } from 'react-router-dom'
-import ReactAudioPlayer from 'react-audio-player'
-import Skeleton from 'react-loading-skeleton'
+import * as React from 'react';
+import { Link } from 'react-router-dom';
 
+import ReactAudioPlayer from 'react-audio-player';
+import SkeletonPlaceholder from '../../atoms/Skeleton';
 import {
   FiPlay,
   FiPlus,
   FiMinus,
   FiExternalLink,
   FiPause,
-} from 'react-icons/fi'
-import { MusicCardStyle } from './style'
+} from 'react-icons/fi';
 
-import placeholder from '../../../assets/png/imgplh.png'
+import { MusicCardStyle } from './style';
+import placeholder from '../../../assets/png/imgplh.png';
 
-const MusicCard = ({ dark = false, favorite = false, music }) => {
-  const [playing, setPlaying] = React.useState(false)
+const MusicCard = ({
+  dark = false,
+  favorite = false,
+  isLoaded,
+  handleRemoveFav,
+  handleAddFav,
+  music: {
+    id,
+    coverImg,
+    albumTitle,
+    artistName,
+    title,
+    duration,
+    position,
+    link,
+    preview,
+  },
+  props,
+}) => {
+  const [playing, setPlaying] = React.useState(false);
 
+  if (!isLoaded) return <SkeletonPlaceholder dark={dark} />;
   return (
     <MusicCardStyle dark={dark}>
       <section className="musics">
         <ul className="musics__list">
           <li className="musics__card">
             <div className="musics__card-img">
-              {music ? (
-                <img src={music.album.cover_medium} alt="album cover" />
-              ) : (
-                <Skeleton height={200} />
-              )}
-              <small>{music ? music.album.title : ''}</small>
+              <img src={coverImg} alt="album cover" />
+              <small>{albumTitle}</small>
             </div>
             <div className="musics__card-infos">
               <div className="musics__card-info">
                 <div className=".musics__card-infos card__title">
-                  <h2>{music ? music.title : <Skeleton />}</h2>
+                  <h2>{title} </h2>
                   <hr />
-                  <small>{music ? music.artist.name : <Skeleton />}</small>
+                  <small>{artistName}</small>
                 </div>
                 <div className="musics__card-item">
-                  <h4>
-                    {music ? (
-                      `Duração: ${music.duration} min`
-                    ) : (
-                      <Skeleton width={250} />
-                    )}
-                  </h4>
-                  <h4>
-                    {music ? (
-                      `Ranking: ${music.position} º`
-                    ) : (
-                      <Skeleton width={250} />
-                    )}
-                  </h4>
+                  <h4>{`Duração: ${duration} min`}</h4>
+                  <h4>{`Ranking: ${position} º`}</h4>
                 </div>
               </div>
+              <ReactAudioPlayer
+                color={'blue'}
+                controlsList="nodownload"
+                src={preview}
+                controls
+              />
               <div className="musics__card-action">
-                <a
-                  href={music ? music.link : null}
-                  target="_blank"
-                  rel="noreferrer"
-                >
+                <a href={link} target="_blank" rel="noreferrer">
                   <button>
-                    <FiExternalLink size={20} fill={'white'} color={'white'} />
+                    <FiExternalLink
+                      size={20}
+                      fill={'white'}
+                      color={'white'}
+                    />
                   </button>
                 </a>
-                <button>
-                  {favorite ? (
-                    <FiMinus size={20} fill={'white'} color={'white'} />
-                  ) : (
-                    <FiPlus size={20} fill={'white'} color={'white'} />
-                  )}
-                </button>
+                {favorite ? (
+                  <button onClick={handleRemoveFav} id={id}>
+                    <FiMinus
+                      name="add"
+                      size={20}
+                      fill={'white'}
+                      color={'white'}
+                    />
+                  </button>
+                ) : (
+                  <button onClick={handleAddFav} id={id}>
+                    <FiPlus
+                      name="remove"
+                      size={20}
+                      fill={'white'}
+                      color={'white'}
+                    />
+                  </button>
+                )}
               </div>
-              {music ? (
-                <ReactAudioPlayer
-                  color={'blue'}
-                  controlsList="nodownload"
-                  src={music ? music.preview : null}
-                  controls
-                />
-              ) : (
-                <Skeleton height={30} width={250} />
-              )}
             </div>
           </li>
         </ul>
       </section>
     </MusicCardStyle>
-  )
-}
+  );
+};
 
-export default MusicCard
+export default MusicCard;

@@ -1,61 +1,109 @@
-import * as React from 'react'
-import { HomeRoot } from './style'
-import getTrendingList from '../../../api/getMusic'
-import getSearchMusic from '../../../api/getSearchMusic'
+import * as React from 'react';
+import PropTypes from 'prop-types';
+import getTrendingList from '../../../api/getMusic';
+import getSearchMusic from '../../../api/getSearchMusic';
 
-import MusicCard from '../../organisms/MusicCard'
-import Header from '../../organisms/Header'
+import MusicCard from '../../organisms/MusicCard';
+import Header from '../../organisms/Header';
+import LoadMore from '../../atoms/LoadMoreButton';
+import SearchInput from '../../organisms/SearchInput';
+import { HomeRoot } from './style';
+import SkeletonPlaceholder from '../../atoms/Skeleton';
+
+import { connect, useStore } from 'react-redux';
+import * as favoriteActions from '../../../redux/actions/addFavorite';
+import { bindActionCreators } from 'redux';
 
 const Home = ({ dark }) => {
-  const [MusicsList, setMusicsList] = React.useState([])
-  const [searchParam, setSearchParam] = React.useState('')
-  const [searchQuery, setSearchQuery] = React.useState('')
-  const [error, setError] = React.useState(false)
-  const [loading, setLoading] = React.useState(false)
+  const [MusicsList, setMusicsList] = React.useState([]);
+  const [searchParam, setSearchParam] = React.useState('');
+  const [searchQuery, setSearchQuery] = React.useState('');
+  const [error, setError] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
+  const [favorites, setFavorites] = React.useState([]);
 
-  const offset = 0
+  /**
+   * Chamar a API da Deezer e popular o array de MusicList
+   */
+
+  const offset = 0;
 
   React.useEffect(() => {
-    setLoading(true)
-    getTrendingList(offset)
-      .then((res) => setMusicsList((prevState) => [...prevState, ...res]))
-      .catch((e) => {
-        setError(true)
-        console.log('Dados não chegaram no routes')
-      })
-      .finally(() => setLoading(false))
-  }, [])
-
-  const handleParamSelection = (e) => {
-    const { value } = e.target
-    setSearchParam(value)
-  }
-  const handleInputChange = (e) => {
-    const { value } = e.target
-    setTimeout(() => {
-      setSearchQuery(value)
-    }, 1800)
-    console.log(searchQuery)
-  }
-
-  const handleSubmitSearch = async (e) => {
-    e.preventDefault()
-    setLoading(true)
+    setLoading(true);
     try {
-      const data = await getSearchMusic(searchParam, searchQuery)
-      console.log(data)
+      getTrendingList(offset).then((res) => {
+        setMusicsList((prevState) => [...prevState, ...res]);
+        localStorage.setItem('musicList', JSON.stringify(MusicCard));
+      });
     } catch (error) {
-      setError(true)
-      throw new Error(`Something Bad happened, ${error}`)
+      setError(true);
+      console.log('Dados não chegaram no routes');
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
-  if (error) return
+  }, []);
+
+  /******************************************************************** */
+  const handleParamSelection = (e) => {
+    const { value } = e.target;
+    setSearchParam(value);
+  };
+  const handleInputChange = (e) => {
+    const { value } = e.target;
+    setTimeout(() => {
+      setSearchQuery(value);
+    }, 1800);
+    console.log(searchQuery);
+  };
+  const handleSubmitSearch = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const data = await getSearchMusic(searchParam, searchQuery);
+      console.log(data);
+    } catch (error) {
+      setError(true);
+      throw new Error(`Something Bad happened, ${error}`);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const store = useStore();
+
+  const handleAddFav = (e) => {
+    e.preventDefault();
+    const { id } = e.target;
+    const addMusic = MusicsList.filter(
+      (item) => item.id === parseInt(id),
+    );
+    console.log(addMusic, id);
+    store.dispatch(favoriteActions.addFavorite(addMusic));
+  };
+
+  const handleLoadMore = (e) => {
+    try {
+      getTrendingList(offset).then((res) => {
+        setMusicsList((prevState) => [...prevState, ...res]);
+      });
+    } catch (error) {
+      setError(true);
+      console.log('Dados não chegaram no routes');
+    } finally {
+      setLoading(false);
+    }
+  };
+  if (loading) return <SkeletonPlaceholder dark={dark} />;
+  if (error) return;
   return (
     <HomeRoot dark={dark}>
       <div className="main__app">
         <Header
+          props={{
+            dark,
+          }}
+        />
+        <SearchInput
           props={{
             dark,
             searchParam,
@@ -68,20 +116,68 @@ const Home = ({ dark }) => {
         {/* Card renderinf must be abstracted */}
         <section className="musics">
           <ul className="musics__list">
-            {MusicsList.map((music) => (
-              <MusicCard
-                dark={dark}
-                favorite={false}
-                music={music}
-                key={`${music.id}`}
-              />
-            ))}
+            {MusicsList.map((music) => {
+              const {
+                id,
+                album: { cover_medium: coverImg, title: albumTitle },
+                artist: { name: artistName },
+                title,
+                duration,
+                position,
+                link,
+                preview,
+              } = music;
+              return loading ? (
+                <SkeletonPlaceholder dark={dark} />
+              ) : (
+                <MusicCard
+                  dark={dark}
+                  favorite={false}
+                  music={{
+                    id,
+                    coverImg,
+                    albumTitle,
+                    artistName,
+                    title,
+                    duration,
+                    position,
+                    link,
+                    preview,
+                  }}
+                  handleAddFav={handleAddFav}
+                  isLoaded={music ? true : false}
+                  key={music.id}
+                />
+              );
+            })}
           </ul>
         </section>
         {/* End of card list component */}
       </div>
+      <LoadMore props={{ handleLoadMore, dark }} />
     </HomeRoot>
-  )
+  );
+};
+
+Home.protoTypes = {
+  dispatch: PropTypes.func.isRequired,
+  favorites: PropTypes.array.isRequired,
+  dark: PropTypes.bool,
+};
+
+function mapStateToProps(favorite) {
+  return {
+    favorite,
+  };
 }
 
-export default Home
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(
+      favoriteActions.addFavorite,
+      dispatch,
+    ),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
