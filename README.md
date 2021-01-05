@@ -1,8 +1,12 @@
 # DEZZ JAM
 
+##### PT - Projeto realizado como teste tecnico, com um period de desenvolvimento de 6 dias
+
+##### EN - Project carried out as a technical test, with a development period of 6 days
+
 ## The design file
 
-(Figma)[https://www.figma.com/file/6rlc8241dOsYj1l9KWrCtP/Manipulae_test?node-id=0%3A1]
+[Figma](https://www.figma.com/file/6rlc8241dOsYj1l9KWrCtP/Manipulae_test?node-id=0%3A1)
 
 ## Setting up
 
@@ -20,8 +24,7 @@ yarn start #npm start
 
 ### Plus
 
-- Skeleton - (Link)[https://github.com/dvtng/react-loading-skeleton]
-- Using immer to manipulate immutabillity
+- Skeleton - [Link](https://github.com/dvtng/react-loading-skeleton)
 - Using `redux-immutable-state-invariant` midleware to ensure that data is not mutate in a displtch or between dispatches during development
 
 ### ISSUES
