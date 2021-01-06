@@ -16,10 +16,9 @@ export default function useMusicsSearch() {
           // if (offset === 0) {
           const res = await api.get(`chart/0/tracks`);
           if (res.ok) {
-            const { data } = res.data;
+            const data = await res.data;
+            setMusicList(res.data);
 
-            console.log(data);
-            setMusicList(data);
             // } else {
             //   const res = await api.get(`chart/0/tracks?index=${String(offset)}`)
             //   const { data } = res.data

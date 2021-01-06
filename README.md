@@ -4,6 +4,12 @@
 
 ##### EN - Project carried out as a technical test, with a development period of 6 days
 
+### [SEE LIVE](https://dezz-jam.netlify.app)
+
+### Preview
+
+![dezz](src\assets\gif\dezz.gif)
+
 ## The design file
 
 [Figma](https://www.figma.com/file/6rlc8241dOsYj1l9KWrCtP/Manipulae_test?node-id=0%3A1)
