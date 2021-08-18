@@ -40,4 +40,4 @@ yarn start #npm start
   - I used an proxy call that added the 'Access-Control-Allow-Origin' to the response, and allowed the second call, GET, to be received and responded by the end-Point [cors-anywhere](https://github.com/Rob--W/cors-anywhere/#documentation)
   - Had some problems with the play() method in a audio HTML element, for the sake of simplicity I used a third party library named [React Audio Player](https://github.com/justinmc/react-audio-player#readme)
 
-# Depois do build as calls estavão sendo negadas, então o modelo atual esta utilizando MockData
+# Depois do build as calls estavam sendo negadas, então o modelo atual esta utilizando MockData
